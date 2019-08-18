@@ -1,8 +1,7 @@
 module.exports = (express) => {
-  var router = express.Router();
-  /* GET home page. */
-  router.get('/', function (req, res, next) {
-    res.render('index');
-  });
-  return router;
+    const controller = require('../controller/index')();
+    const router = express.Router();
+    router.get('/', (req, res, next)=>controller.get(req, res, next));
+    router.get('/begin', (req, res, next)=>controller.begin(req, res, next));
+    return router;
 };

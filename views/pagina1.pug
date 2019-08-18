@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    // Use a criatividade ;)
+
+    h1 Quiz 1/5
+    pre
+        |No dia mais claro, na noite mais densa
+        |O mal sucumbirá ante a minha _____
+        |Todo aquele que venera o mal há de temer
+        |A luz do Lanterna Verde e o seu poder!
+    br
+    h2 Respota:
+    form(action='/quiz' method="POST")
+        input(type="radio" name="juramento" value="garrucha")
+        a &nbsp; Garrucha
+        br
+        input(type="radio" name="juramento" value="escopeta")
+        a &nbsp; Escopeta
+        br
+        input(type="radio" name="juramento" value="martelo")
+        a &nbsp; Macarena
+        br
+        input(type="radio" name="juramento" value="athenas" onclick="meteoro()")
+        a &nbsp; &nbsp;Athenas
+        br
+        br
+        button(type="submit") Responder
+    script(src='/javascripts/pagina1.js')
