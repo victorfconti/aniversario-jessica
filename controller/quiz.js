@@ -21,7 +21,8 @@ module.exports = () => {
                 final(req, res, next);
                 break;
             default:
-                res.redirect('/');
+                req.session.stage = 1;
+                res.redirect('/quiz');
                 break;
         }
     };
