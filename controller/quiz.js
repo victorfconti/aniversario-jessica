@@ -28,27 +28,28 @@ module.exports = () => {
     };
 
     this.post = function(req, res, next){
-
+    let erro;
         switch(req.session.stage){
             case 1:
-                pagina1Post(req, res, next);
+                erro = pagina1Post(req, res, next);
                 break;
             case 2:
-                pagina2Post(req, res, next);
+                erro = pagina2Post(req, res, next);
                 break;
             case 3:
-                pagina3Post(req, res, next);
+                erro = pagina3Post(req, res, next);
                 break;
             case 4:
-                pagina4Post(req, res, next);
+                erro = pagina4Post(req, res, next);
                 break;
             case 5:
-                pagina5Post(req, res, next);
+                erro = pagina5Post(req, res, next);
                 break;
             default:
                 res.redirect('/');
         }
-        res.redirect('/quiz');
+        if(!erro)
+            res.redirect('/quiz');
     };
 
     this.unlock = function(req, res, next){
@@ -81,22 +82,42 @@ module.exports = () => {
     }
 
     function pagina1Post(req, res, next) {
+        if(req.body.juramento !== 'presenca' && req.body.juramento !== 'presença') {
+            res.render('pagina1', {error: 'error'});
+            return true;
+        }
         req.session.stage = 2;
     }
 
     function pagina2Post(req, res, next) {
+        if(req.body.senha !== 'danca da motinha'){
+            res.render('pagina2', {error: 'error'});
+            return true;
+        }
         req.session.stage = 3;
     }
 
     function pagina3Post (req, res, next){
+        if(req.body.senha !== 'patona' && req.body.senha !== 'Patona'){
+            res.render('pagina3', {error: 'error'});
+            return true;
+        }
         req.session.stage = 4;
     }
 
     function pagina4Post (req, res, next){
+        if(req.body.status !== '418' && req.body.codigo !== 'come together right now'){
+            res.render('pagina4', {error: 'error'});
+            return true;
+        }
         req.session.stage = 5;
     }
 
     function pagina5Post (req, res, next){
+        if(req.body.key !== 'instrospect'){
+            res.render('pagina5', {error: 'error'})
+            return;
+        }
         req.session.stage = 'final';
     }
 

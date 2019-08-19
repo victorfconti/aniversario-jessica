@@ -5,6 +5,10 @@ html
     link(rel="icon" type="image/png" href="/images/pixel_stars.png")
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    if error
+      div(class="w-100 w-center")
+        h3 Resposta errada
+
     div(class="center")
       div(class="text-center")
         block content
