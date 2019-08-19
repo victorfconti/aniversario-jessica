@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    // Estenografia
+    h1 Quiz 3/5
+    pre
+        | O que sera que essa imagem esconde?
+    img(src='/images/pixel_star_black.png', width=256, height=256)
+    br
+    p2 Resposta:
+    form(action='/quiz' method='POST')
+        br
+        input(type='text' placeholder='Codigo')
+        br
+        br
+        br
+        button(type="submit") Responder
+    script(src='/javascripts/pagina3.js')

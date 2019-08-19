@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    // Pode usar o postman
+    h1 Quiz 4/5
+    pre
+        | Verbos, verbos e mais verbos!
+    img(src='/images/barcode.png')
+    br
+    p2 Resposta:
+    form(action='/quiz' method='POST')
+        br
+        input(type='text', placeholder='Status')
+        br
+        br
+        input(type='text' placeholder='Codigo')
+        br
+        br
+        br
+        button(type="submit") Responder
+    script(src='/javascripts/pagina4.js')

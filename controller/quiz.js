@@ -21,15 +21,16 @@ module.exports = () => {
                 final(req, res, next);
                 break;
             default:
-                pagina1(req, res, next);
+                res.redirect('/');
                 break;
         }
     };
 
     this.post = function(req, res, next){
+
         switch(req.session.stage){
             case 1:
-                pagina1Post(req, res, next).bind(this);
+                pagina1Post(req, res, next);
                 break;
             case 2:
                 pagina2Post(req, res, next);
@@ -43,7 +44,15 @@ module.exports = () => {
             case 5:
                 pagina5Post(req, res, next);
                 break;
+            default:
+                res.redirect('/');
         }
+        res.redirect('/quiz');
+    };
+
+    this.unlock = function(req, res, next){
+      res.status(418);
+      res.json({'code':'come together right now'});
     };
 
     function pagina1 (req, res, next) {
@@ -59,15 +68,15 @@ module.exports = () => {
     }
 
     function pagina4 (req, res, next){
-        req.render('pagina4');
+        res.render('pagina4');
     }
 
     function pagina5 (req, res, next){
-        req.render('pagina5');
+        res.render('pagina5');
     }
 
     function final (req, res, next){
-        req.render('final');
+        res.render('final');
     }
 
     function pagina1Post(req, res, next) {

@@ -11,7 +11,7 @@ block content
         |A luz do Lanterna Verde e o seu poder!
     br
     h2 Respota:
-    form(action='/quiz' method="POST")
+    form(action='/quiz' method='POST')
         input(type="radio" name="juramento" value="garrucha")
         a &nbsp; Garrucha
         br
@@ -23,6 +23,7 @@ block content
         br
         input(type="radio" name="juramento" value="athenas" onclick="meteoro()")
         a &nbsp; &nbsp;Athenas
+        br
         br
         br
         button(type="submit") Responder
